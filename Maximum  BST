@@ -1,0 +1,55 @@
+class Node {
+
+    int data;
+    Node left;
+    Node right;
+
+    Node(int data) {
+        this.data = data;
+        left = null;
+        right = null;
+    }
+}
+
+public class Main {
+
+    // Find Maximum
+    static Node findMax(Node root) {
+
+        if (root == null)
+            return null;
+
+        while (root.right != null) {
+            root = root.right;
+        }
+
+        return root;
+    }
+
+    public static void main(String[] args) {
+
+        // Create Nodes
+        Node root = new Node(50);
+
+        Node n1 = new Node(30);
+        Node n2 = new Node(70);
+        Node n3 = new Node(20);
+        Node n4 = new Node(40);
+        Node n5 = new Node(60);
+        Node n6 = new Node(80);
+
+        // Connect Nodes
+        root.left = n1;
+        root.right = n2;
+
+        n1.left = n3;
+        n1.right = n4;
+
+        n2.left = n5;
+        n2.right = n6;
+
+        Node max = findMax(root);
+
+        System.out.println("Maximum Value : " + max.data);
+    }
+}
